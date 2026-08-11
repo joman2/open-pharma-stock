@@ -1,0 +1,25 @@
+name: mobile_scanner
+description: A vendored scanner adapted for OpenPharmaStock. Android uses CameraX, ZXing and libdmtx without proprietary barcode runtimes.
+version: 5.2.3
+publish_to: none
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lint: ">=1.10.0 <3.0.0"
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: dev.steenbakker.mobile_scanner
+        pluginClass: MobileScannerPlugin

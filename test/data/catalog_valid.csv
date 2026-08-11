@@ -1,0 +1,4 @@
+source_record_id,lookup_code,lookup_code_kind,canonical_code,display_name,active_substance,strength,pharmaceutical_form,presentation,holder,leaflet_url,rcm_url,source_url,image_url,is_primary
+csv-pt-reg,1234567,PT_REG,56012345678901,Medicamento QA CSV,Substância QA,150 mg,Comprimido revestido,28 comprimidos,Laboratório QA,https://example.com/fi,https://example.com/rcm,https://example.com/source,,true
+csv-gtin,05601234567890,GTIN,05601234567890,Medicamento GTIN CSV,Substância GTIN,20 mg,Cápsula,10 cápsulas,Laboratório GTIN,https://example.com/fi2,https://example.com/rcm2,https://example.com/source2,,true
+csv-ean8,12345670,EAN,12345670,Medicamento EAN8 CSV,Substância EAN,5 mg,Solução,1 unidade,Laboratório EAN,,,,,true

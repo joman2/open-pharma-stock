@@ -1,0 +1,19 @@
+OpenPharmaStock is a privacy-conscious Android inventory utility for pharmacy
+stock-counting workflows.
+
+Features:
+
+* Scan GS1 DataMatrix, EAN and other common barcodes
+* Extract GTIN, serial, lot and expiry information when available
+* Aggregate stock quantities and avoid duplicate serials
+* Keep local inventory sessions and scan history
+* Import a local medicine catalogue from CSV
+* Export summaries as CSV or text
+* Create and restore local backups
+
+Inventory data stays on the device. Online INFARMED medicine lookup is disabled
+by default and can be enabled explicitly in Settings. The scanner uses only
+FLOSS components and does not upload camera frames.
+
+OpenPharmaStock is an early release and is not a replacement for validated
+professional pharmacy software.

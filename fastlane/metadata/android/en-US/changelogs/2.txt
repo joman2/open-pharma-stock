@@ -1,0 +1,2 @@
+F-Droid candidate with a fully FLOSS Android barcode scanner, opt-in INFARMED
+lookup, improved privacy documentation and release hygiene.

@@ -1,0 +1,1 @@
+Scan medicine barcodes and manage local pharmacy inventory

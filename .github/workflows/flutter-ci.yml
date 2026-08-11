@@ -1,0 +1,51 @@
+name: Flutter CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  repository-hygiene:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Reject private or generated artifacts
+        shell: bash
+        run: |
+          forbidden="$(
+            git ls-files |
+              grep -Ei '(^|/)(local\.properties|key\.properties|\.env(\..+)?|secrets?(\..+)?|credentials?(\..+)?)$|\.((apk|aab|apks|jks|keystore|p12|pfx|pem|key|db|sqlite|sqlite3))$' ||
+              true
+          )"
+          if [[ -n "$forbidden" ]]; then
+            printf 'Forbidden tracked files:\n%s\n' "$forbidden"
+            exit 1
+          fi
+
+  analyze-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.38.3
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get --enforce-lockfile
+
+      - name: Analyze
+        run: flutter analyze lib test
+
+      - name: Test
+        run: flutter test

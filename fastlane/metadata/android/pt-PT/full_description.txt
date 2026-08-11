@@ -1,0 +1,20 @@
+OpenPharmaStock é uma aplicação Android orientada à privacidade para contagens
+de inventário em farmácia.
+
+Funcionalidades:
+
+* Leitura de GS1 DataMatrix, EAN e outros códigos de barras comuns
+* Extração de GTIN, número de série, lote e validade quando disponíveis
+* Agregação de quantidades e prevenção de séries duplicadas
+* Sessões de inventário e histórico guardados localmente
+* Importação de catálogo local de medicamentos em CSV
+* Exportação de resumos em CSV ou texto
+* Criação e restauro de cópias de segurança locais
+
+Os dados de inventário permanecem no dispositivo. A pesquisa online de
+medicamentos no INFARMED está desligada por defeito e só pode ser ativada
+explicitamente nas Definições. O scanner usa apenas componentes FLOSS e não
+envia imagens da câmara.
+
+OpenPharmaStock é uma versão inicial e não substitui software profissional de
+farmácia validado.

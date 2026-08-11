@@ -1,0 +1,2 @@
+Candidato F-Droid com scanner Android totalmente FLOSS, pesquisa INFARMED
+opt-in, documentação de privacidade e processo de release melhorados.
