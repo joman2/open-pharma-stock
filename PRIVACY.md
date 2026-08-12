@@ -1,12 +1,12 @@
 # Privacy Policy
 
-OpenPharmaStock is designed to keep inventory data on the Android device.
+open-pharma-stock is designed to keep inventory data on the Android device.
 
 ## Data stored locally
 
 The app can store barcode payloads, GTIN values, serial numbers, inventory
 sessions, scan history, settings, imported catalogue data and locally generated
-exports or backups. OpenPharmaStock does not provide cloud synchronisation,
+exports or backups. open-pharma-stock does not provide cloud synchronisation,
 analytics, advertising or crash-reporting services.
 
 ## Camera
@@ -17,7 +17,7 @@ FLOSS barcode libraries and are not uploaded by the scanner.
 ## Optional INFARMED lookup
 
 Online medicine lookup is disabled by default. If the user explicitly enables
-it in Settings, OpenPharmaStock sends the relevant medicine lookup code to the
+it in Settings, open-pharma-stock sends the relevant medicine lookup code to the
 official INFARMED medicine search service. INFARMED receives the normal network
 metadata associated with that request, such as the device IP address. The app
 does not send inventory quantities, session names or serial numbers for this

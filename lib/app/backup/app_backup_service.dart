@@ -102,10 +102,8 @@ class AppBackupService {
       '/sdcard/Download',
       '/storage/emulated/0/Documents',
       '/sdcard/Documents',
-      '/storage/emulated/0/Android/data/com.example.open_pharma_stock/files',
-      '/sdcard/Android/data/com.example.open_pharma_stock/files',
-      '/storage/emulated/0/Android/data/com.open.pharma.stock/files',
-      '/sdcard/Android/data/com.open.pharma.stock/files',
+      '/storage/emulated/0/Android/data/open.pharma.stock/files',
+      '/sdcard/Android/data/open.pharma.stock/files',
     };
     final candidates = <BackupImportCandidate>[];
     for (final path in directories) {

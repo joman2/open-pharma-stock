@@ -1,4 +1,4 @@
-OpenPharmaStock is a privacy-conscious Android inventory utility for pharmacy
+open-pharma-stock is a privacy-conscious Android inventory utility for pharmacy
 stock-counting workflows.
 
 Features:
@@ -15,5 +15,5 @@ Inventory data stays on the device. Online INFARMED medicine lookup is disabled
 by default and can be enabled explicitly in Settings. The scanner uses only
 FLOSS components and does not upload camera frames.
 
-OpenPharmaStock is an early release and is not a replacement for validated
+open-pharma-stock is an early release and is not a replacement for validated
 professional pharmacy software.

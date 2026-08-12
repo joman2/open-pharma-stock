@@ -1,6 +1,12 @@
 # Changelog
 
-## v0.2.0 - Unreleased
+## v0.2.1 - Unreleased
+
+- Set the Android application ID and visible application name to
+  `open.pharma.stock` and `open-pharma-stock` respectively before the first
+  F-Droid submission.
+
+## v0.2.0
 
 - Replaced the proprietary Android ML Kit barcode runtime with a FLOSS scanner
   based on CameraX, ZXing, OpenCV and libdmtx.
@@ -9,7 +15,7 @@
 - Pinned Flutter 3.38.3 across CI, the lockfile and the F-Droid build recipe.
 - Expanded ignores and repository hygiene checks for keys, credentials, builds,
   backups, exports and QA evidence.
-- Added an original OpenPharmaStock application icon and privacy policy.
+- Added an original open-pharma-stock application icon and privacy policy.
 
 ## Release Status
 

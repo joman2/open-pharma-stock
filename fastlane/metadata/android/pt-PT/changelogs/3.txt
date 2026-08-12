@@ -1,0 +1,5 @@
+Primeira submissão ao F-Droid do open-pharma-stock.
+
+- Fluxos de inventário de farmácia locais
+- Leitura de códigos de barras com componentes FLOSS
+- Consulta online opcional, desativada por defeito

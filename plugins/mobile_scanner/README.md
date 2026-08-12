@@ -1,8 +1,8 @@
-# mobile_scanner (OpenPharmaStock fork)
+# mobile_scanner (open-pharma-stock fork)
 
 This vendored fork replaces the upstream Android ML Kit runtime with a fully
 FLOSS CameraX, ZXing, OpenCV and libdmtx decoding pipeline. It remains vendored
-because OpenPharmaStock includes pharmacy-specific DataMatrix fallback and
+because open-pharma-stock includes pharmacy-specific DataMatrix fallback and
 tracking behavior.
 
 [![pub package](https://img.shields.io/pub/v/mobile_scanner.svg)](https://pub.dev/packages/mobile_scanner)

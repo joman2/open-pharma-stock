@@ -1,4 +1,4 @@
-package com.open.pharma.stock
+package open.pharma.stock
 
 import android.content.BroadcastReceiver
 import android.content.ContentValues

@@ -1,1 +1,1 @@
-OpenPharmaStock
+open-pharma-stock

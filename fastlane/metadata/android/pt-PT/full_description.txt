@@ -1,4 +1,4 @@
-OpenPharmaStock é uma aplicação Android orientada à privacidade para contagens
+open-pharma-stock é uma aplicação Android orientada à privacidade para contagens
 de inventário em farmácia.
 
 Funcionalidades:
@@ -16,5 +16,5 @@ medicamentos no INFARMED está desligada por defeito e só pode ser ativada
 explicitamente nas Definições. O scanner usa apenas componentes FLOSS e não
 envia imagens da câmara.
 
-OpenPharmaStock é uma versão inicial e não substitui software profissional de
+open-pharma-stock é uma versão inicial e não substitui software profissional de
 farmácia validado.

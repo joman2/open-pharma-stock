@@ -1,10 +1,10 @@
 # Public Release Policy
 
-This document defines the public release architecture of OpenPharmaStock.
+This document defines the public release architecture of open-pharma-stock.
 
 ## Release Scope
 
-`v0.2.0` is the first F-Droid release candidate.
+`v0.2.1` is the first F-Droid release candidate.
 
 The app is an early-stage inventory utility. It has not been validated for
 regulated pharmacy operations and does not replace professional pharmacy

@@ -1,4 +1,4 @@
-# Contributing to OpenPharmaStock
+# Contributing to open-pharma-stock
 
 Keep contributions focused on clarity, stability, and practical Android-first workflows.
 

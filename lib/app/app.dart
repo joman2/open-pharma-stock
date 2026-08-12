@@ -94,7 +94,7 @@ class _OpenPharmaStockAppState extends State<OpenPharmaStockApp> {
           valueListenable: widget.settingsController,
           builder: (context, settings, child) {
             return MaterialApp(
-              title: 'OpenPharmaStock',
+              title: 'open-pharma-stock',
               navigatorKey: _tourController.navigatorKey,
               theme: buildAppTheme(Brightness.dark),
               darkTheme: buildAppTheme(Brightness.dark),

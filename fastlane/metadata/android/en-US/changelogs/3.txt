@@ -1,0 +1,5 @@
+First F-Droid submission for open-pharma-stock.
+
+- Offline-first pharmacy inventory workflows
+- FLOSS barcode scanning
+- Optional online medicine lookup, disabled by default

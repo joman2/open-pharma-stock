@@ -1,5 +1,5 @@
 name: mobile_scanner
-description: A vendored scanner adapted for OpenPharmaStock. Android uses CameraX, ZXing and libdmtx without proprietary barcode runtimes.
+description: A vendored scanner adapted for open-pharma-stock. Android uses CameraX, ZXing and libdmtx without proprietary barcode runtimes.
 version: 5.2.3
 publish_to: none
 

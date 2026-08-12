@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "io.github.joman2.openpharmastock"
+    namespace = "open.pharma.stock"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,7 +20,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "io.github.joman2.openpharmastock"
+        applicationId = "open.pharma.stock"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

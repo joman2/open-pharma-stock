@@ -1,12 +1,12 @@
 # F-Droid Release Guide
 
-This is the reusable release process for OpenPharmaStock.
+This is the reusable release process for open-pharma-stock.
 
 ## Invariants
 
 - Develop on `main`.
 - Keep the Android application ID
-  `io.github.joman2.openpharmastock`.
+  `open.pharma.stock`.
 - Use monotonically increasing integer build numbers in `pubspec.yaml`.
 - Create stable tags as `vMAJOR.MINOR.PATCH`; never move a published tag.
 - Keep Flutter pinned to the same exact version in `.metadata`, CI and

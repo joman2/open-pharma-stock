@@ -211,7 +211,7 @@ class MobileScanner(
             }
             rotated.recycle()
         } catch (error: Exception) {
-            Log.e("OpenPharmaStock", "Barcode analysis failed", error)
+            Log.e("open-pharma-stock", "Barcode analysis failed", error)
             mobileScannerErrorCallback(error.localizedMessage ?: error.toString())
         } finally {
             imageProxy.close()

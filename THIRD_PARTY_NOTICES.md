@@ -54,7 +54,7 @@ Android dependencies are declared in `android/app/build.gradle.kts` and
 
 ## Project-Owned Assets
 
-The following assets were generated for OpenPharmaStock and are covered by the
+The following assets were generated for open-pharma-stock and are covered by the
 repository Apache-2.0 license:
 
 - `assets/sounds/scan_beep.wav`

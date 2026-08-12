@@ -1,11 +1,11 @@
-# OpenPharmaStock
+# open-pharma-stock
 
 Privacy-conscious Flutter app for pharmacy inventory workflows, developed for
 Android.
 
 ## Status
 
-OpenPharmaStock is an early release. It is useful for local stock counting and
+open-pharma-stock is an early release. It is useful for local stock counting and
 exports, but has not yet been validated as a replacement for professional
 pharmacy software.
 
@@ -35,11 +35,11 @@ pharmacy software.
 
 ## License
 
-OpenPharmaStock is licensed under the [Apache License 2.0](LICENSE).
+open-pharma-stock is licensed under the [Apache License 2.0](LICENSE).
 
 ## Releases and F-Droid
 
-`v0.2.0` is the first F-Droid candidate. Android barcode scanning uses only
+`v0.2.1` is the first F-Droid candidate. Android barcode scanning uses only
 FLOSS components: CameraX, ZXing, OpenCV and libdmtx. F-Droid builds and signs
 its APK directly from the tagged public source.
 

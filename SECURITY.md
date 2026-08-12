@@ -1,6 +1,6 @@
 # Security Policy
 
-OpenPharmaStock is an Android-first local inventory utility. It can still handle sensitive operational data, including medicine serial numbers, raw scanned codes, inventory backups, exported files, logs, and screenshots.
+open-pharma-stock is an Android-first local inventory utility. It can still handle sensitive operational data, including medicine serial numbers, raw scanned codes, inventory backups, exported files, logs, and screenshots.
 
 Please avoid sharing real pharmacy data in public issues, screenshots, logs, or sample backups. Use redacted examples whenever possible.
 
