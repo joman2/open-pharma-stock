@@ -1,0 +1,3 @@
+• Added complete in-app language support for English, Chinese, Hindi, Spanish, French, Arabic, Bengali, Portuguese, Russian, and Indonesian.
+• Added separate Portuguese (Portugal/Brazil) and Chinese (Simplified/Traditional) variants.
+• Improved accessibility labels and right-to-left layout support.

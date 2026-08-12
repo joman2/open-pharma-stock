@@ -1,0 +1,3 @@
+• Adicionado suporte completo no aplicativo para inglês, chinês, hindi, espanhol, francês, árabe, bengali, português, russo e indonésio.
+• Adicionadas variantes distintas de português (Portugal/Brasil) e chinês (simplificado/tradicional).
+• Melhorados os rótulos de acessibilidade e o suporte a idiomas da direita para a esquerda.

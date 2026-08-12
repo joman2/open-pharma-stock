@@ -1,0 +1,3 @@
+• Dukungan penuh ditambahkan untuk bahasa Inggris, Tionghoa, Hindi, Spanyol, Prancis, Arab, Bengali, Portugis, Rusia, dan Indonesia.
+• Varian terpisah untuk bahasa Portugis dan Tionghoa telah ditambahkan.
+• Label aksesibilitas dan dukungan tata letak kanan-ke-kiri ditingkatkan.

@@ -1,0 +1,3 @@
+• Prise en charge complète de l’anglais, du chinois, de l’hindi, de l’espagnol, du français, de l’arabe, du bengali, du portugais, du russe et de l’indonésien.
+• Ajout des variantes portugais (Portugal/Brésil) et chinois (simplifié/traditionnel).
+• Amélioration de l’accessibilité et de la mise en page de droite à gauche.

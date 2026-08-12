@@ -1,0 +1,3 @@
+• Se añadió compatibilidad completa con inglés, chino, hindi, español, francés, árabe, bengalí, portugués, ruso e indonesio.
+• Se añadieron variantes de portugués (Portugal/Brasil) y chino (simplificado/tradicional).
+• Se mejoraron las etiquetas de accesibilidad y el diseño de derecha a izquierda.
