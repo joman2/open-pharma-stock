@@ -1,0 +1,14 @@
+open-pharma-stock es una utilidad Android orientada a la privacidad para el recuento de inventario de farmacia.
+
+Funciones:
+
+* Escanea GS1 DataMatrix, EAN y otros códigos de barras habituales
+* Extrae GTIN, número de serie, lote y caducidad cuando están disponibles
+* Agrupa cantidades y evita números de serie duplicados
+* Conserva las sesiones y el historial de lecturas localmente
+* Importa un catálogo local de medicamentos desde CSV
+* Exporta resúmenes como CSV o texto y crea copias de seguridad locales
+
+Los datos de inventario permanecen en el dispositivo. La consulta en línea de medicamentos de INFARMED está desactivada de forma predeterminada y solo se puede activar explícitamente en Ajustes. El lector usa únicamente componentes FLOSS y no carga fotogramas de la cámara.
+
+Es una versión inicial y no sustituye software profesional de farmacia validado.

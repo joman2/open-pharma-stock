@@ -1,9 +1,10 @@
 import 'dart:math' as math;
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
 import 'package:flutter/services.dart';
 
 import '../theme/app_theme.dart';
+import '../../l10n/localized_text.dart';
 import 'app_tour_scope.dart';
 import 'app_tour_state.dart';
 
@@ -171,7 +172,10 @@ class _TourStepCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Passo ${stepIndex + 1} de $stepCount',
+                      context.trFormat(r'Passo $current de $total', {
+                        'current': stepIndex + 1,
+                        'total': stepCount,
+                      }),
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
                     const SizedBox(height: 10),
@@ -186,7 +190,7 @@ class _TourStepCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 18),
                     Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: AlignmentDirectional.centerStart,
                       child: TextButton(
                         focusNode: _skipFocusNode,
                         onPressed: isBusy ? null : () => onSkip(),
@@ -211,7 +215,7 @@ class _TourStepCard extends StatelessWidget {
                             autofocus: true,
                             focusNode: _nextFocusNode,
                             onPressed: isBusy ? null : () => onNext(),
-                            child: Text(step.nextLabel),
+                            child: Text(context.tr(step.nextLabel)),
                           ),
                         ),
                       ],

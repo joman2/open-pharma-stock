@@ -1,0 +1,14 @@
+Stok Farmasi Terbuka adalah utilitas Android yang mengutamakan privasi untuk penghitungan inventaris farmasi.
+
+Fitur:
+
+* Memindai GS1 DataMatrix, EAN, dan kode batang umum lainnya
+* Mengekstrak GTIN, nomor seri, lot, dan kedaluwarsa bila tersedia
+* Menggabungkan jumlah dan mencegah nomor seri duplikat
+* Menyimpan sesi inventaris dan riwayat pemindaian secara lokal
+* Mengimpor katalog obat lokal dari CSV
+* Mengekspor ringkasan sebagai CSV atau teks serta membuat cadangan lokal
+
+Data inventaris tetap berada di perangkat. Pencarian obat INFARMED daring dinonaktifkan secara bawaan dan hanya dapat diaktifkan secara eksplisit di Pengaturan. Pemindai hanya memakai komponen FLOSS dan tidak mengunggah bingkai kamera.
+
+Ini adalah rilis awal dan bukan pengganti perangkat lunak farmasi profesional yang tervalidasi.

@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/theme/app_theme.dart';
 import '../../../app/tour/app_tour_targets.dart';
+import '../../../l10n/localized_text.dart';
 import '../../medication_catalog/application/lookup_hints.dart';
 import '../../medication_catalog/domain/medication_enrichment_service.dart';
 import '../../medication_catalog/domain/models.dart';
@@ -180,7 +181,10 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       ),
                       SizedBox(height: context.s(3)),
                       Text(
-                        '${widget.item.codeType} • ${widget.item.qty} unidades',
+                        context.trFormat(r'$codeType • $quantity unidades', {
+                          'codeType': widget.item.codeType,
+                          'quantity': widget.item.qty,
+                        }),
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
@@ -557,7 +561,9 @@ class _EventCard extends StatelessWidget {
                   child: Text(
                     event.serialNumber == null || event.serialNumber!.isEmpty
                         ? 'Sem número de série'
-                        : 'SN ${event.serialNumber}',
+                        : context.trFormat(r'SN $serialNumber', {
+                            'serialNumber': event.serialNumber,
+                          }),
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
@@ -571,10 +577,16 @@ class _EventCard extends StatelessWidget {
               ],
             ),
             if (event.lot != null && event.lot!.isNotEmpty)
-              Text('Lote ${event.lot}', style: style),
+              Text(
+                context.trFormat(r'Lote $lot', {'lot': event.lot}),
+                style: style,
+              ),
             if (event.expiry != null)
               Text(
-                'Validade ${event.expiry!.day.toString().padLeft(2, '0')}/${event.expiry!.month.toString().padLeft(2, '0')}/${event.expiry!.year}',
+                context.trFormat(r'Validade $expiry', {
+                  'expiry':
+                      '${event.expiry!.day.toString().padLeft(2, '0')}/${event.expiry!.month.toString().padLeft(2, '0')}/${event.expiry!.year}',
+                }),
                 style: style,
               ),
             Text(

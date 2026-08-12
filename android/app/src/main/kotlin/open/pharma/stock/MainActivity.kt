@@ -171,7 +171,11 @@ class MainActivity : FlutterActivity() {
             }
           }
         }
-    registerReceiver(qaReceiver, IntentFilter(action))
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+      registerReceiver(qaReceiver, IntentFilter(action), RECEIVER_NOT_EXPORTED)
+    } else {
+      registerReceiver(qaReceiver, IntentFilter(action))
+    }
   }
 
   override fun dispatchKeyEvent(event: KeyEvent): Boolean {

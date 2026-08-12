@@ -1,0 +1,5 @@
+Internasionalisasi antarmuka dan metadata toko.
+
+- Dukungan varian Portugis, Tionghoa, dan bahasa RTL
+- Inventaris lokal dan pemindaian kode batang FLOSS
+- Pencarian daring opsional, dinonaktifkan secara bawaan

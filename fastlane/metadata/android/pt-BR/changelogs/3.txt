@@ -1,0 +1,5 @@
+Internacionalização da interface e dos metadados da loja.
+
+- Suporte a variantes de português, chinês e idiomas RTL
+- Inventário local e leitura FLOSS de códigos de barras
+- Consulta online opcional, desativada por padrão

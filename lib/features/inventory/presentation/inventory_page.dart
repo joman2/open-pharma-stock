@@ -5,7 +5,7 @@ import 'dart:ui' show lerpDouble;
 
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
 import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -24,6 +24,7 @@ import '../../../core/sound/sound_player.dart';
 import '../../../export/inventory_exporter.dart';
 import '../../../scanner/mobile_scanner_engine.dart';
 import '../../../scanner/scanner_engine.dart';
+import '../../../l10n/localized_text.dart';
 import '../../medication_catalog/application/lookup_hints.dart';
 import '../../medication_catalog/data/catalog_csv_importer.dart';
 import '../../medication_catalog/domain/medication_catalog_repository.dart';
@@ -782,9 +783,15 @@ class _InventoryPageState extends State<InventoryPage>
       final registeredCount = acceptedEvents.length;
       _setScannerVisualState(
         ScannerVisualState.read,
-        title: registeredCount > 1 ? 'Lido x$registeredCount' : 'Lido',
+        title: registeredCount > 1
+            ? context.trFormat(r'Lido x$registeredCount', {
+                'registeredCount': registeredCount,
+              })
+            : 'Lido',
         feedback: registeredCount > 1
-            ? 'Leitura registada com quantidade x$registeredCount.'
+            ? context.trFormat(r'Leitura registada com quantidade x$count.', {
+                'count': registeredCount,
+              })
             : 'Leitura registada.',
         keepFor: const Duration(milliseconds: 1400),
       );
@@ -1156,7 +1163,10 @@ class _InventoryPageState extends State<InventoryPage>
           backgroundColor: Theme.of(context).cardColor,
           title: const Text('Apagar sessão'),
           content: Text(
-            'Tem a certeza que deseja apagar "${widget.session.name}"? Todos os eventos serão removidos.',
+            context.trFormat(
+              r'Tem a certeza que deseja apagar "$name"? Todos os eventos serão removidos.',
+              {'name': widget.session.name},
+            ),
           ),
           actions: [
             TextButton(
@@ -2029,8 +2039,8 @@ class _InventoryPageState extends State<InventoryPage>
                             child: TextField(
                               controller: _searchController,
                               autofocus: true,
-                              decoration: const InputDecoration(
-                                hintText: 'Filtrar produtos...',
+                              decoration: InputDecoration(
+                                hintText: context.tr('Filtrar produtos...'),
                                 prefixIcon: Icon(Icons.search),
                               ),
                             ),
@@ -2056,7 +2066,7 @@ class _InventoryPageState extends State<InventoryPage>
                     child: SizedBox.square(
                       dimension: context.s(48),
                       child: IconButton(
-                        tooltip: 'Pesquisar',
+                        tooltip: context.tr('Pesquisar'),
                         onPressed: _toggleSearch,
                         icon: Icon(_isSearching ? Icons.close : Icons.search),
                       ),
@@ -2067,7 +2077,7 @@ class _InventoryPageState extends State<InventoryPage>
                     child: SizedBox.square(
                       dimension: context.s(48),
                       child: IconButton(
-                        tooltip: 'Exportar dados',
+                        tooltip: context.tr('Exportar dados'),
                         onPressed: _isExporting ? null : _openExportFlow,
                         icon: const Icon(Icons.file_download_outlined),
                       ),
@@ -2488,7 +2498,12 @@ class _ExportFlowPageState extends State<ExportFlowPage> {
                         ),
                       ),
                       Text(
-                        '${widget.itemCount} registos',
+                        context.trPlural(
+                          count: widget.itemCount,
+                          oneSource: r'$count registo',
+                          otherSource: r'$count registos',
+                          placeholder: 'count',
+                        ),
                         style: Theme.of(context).textTheme.labelMedium
                             ?.copyWith(color: context.palette.accent),
                       ),
@@ -2591,15 +2606,25 @@ class _ProductCard extends StatelessWidget {
                               ? 'GTIN'
                               : item.codeType,
                         ),
-                        _MetaPill(label: 'Qtd ${item.qty}'),
+                        _MetaPill(
+                          label: context.trFormat(r'Qtd $quantity', {
+                            'quantity': item.qty,
+                          }),
+                        ),
                         if (summary?.lot != null && summary!.lot!.isNotEmpty)
-                          _MetaPill(label: 'Lote ${summary!.lot!}'),
+                          _MetaPill(
+                            label: context.trFormat(r'Lote $lot', {
+                              'lot': summary!.lot!,
+                            }),
+                          ),
                       ],
                     ),
                     if (expiry != null) ...[
                       const SizedBox(height: 10),
                       Text(
-                        'Validade $expiry',
+                        context.trFormat(r'Validade $expiry', {
+                          'expiry': expiry,
+                        }),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: context.palette.warningText,
                         ),
@@ -2651,10 +2676,16 @@ class _ReadCard extends StatelessWidget {
           metadata!.activeSubstance!.isNotEmpty)
         metadata.activeSubstance!,
       if (event.serialNumber != null && event.serialNumber!.isNotEmpty)
-        'SN ${event.serialNumber}',
-      if (event.lot != null && event.lot!.isNotEmpty) 'Lote ${event.lot}',
+        context.trFormat(r'SN $serialNumber', {
+          'serialNumber': event.serialNumber,
+        }),
+      if (event.lot != null && event.lot!.isNotEmpty)
+        context.trFormat(r'Lote $lot', {'lot': event.lot}),
       if (event.expiry != null)
-        'Validade ${event.expiry!.day.toString().padLeft(2, '0')}/${event.expiry!.month.toString().padLeft(2, '0')}/${event.expiry!.year}',
+        context.trFormat(r'Validade $expiry', {
+          'expiry':
+              '${event.expiry!.day.toString().padLeft(2, '0')}/${event.expiry!.month.toString().padLeft(2, '0')}/${event.expiry!.year}',
+        }),
     ];
     return Card(
       child: Padding(
@@ -3420,8 +3451,8 @@ class _BarcodeQuantitySheetState extends State<_BarcodeQuantitySheet> {
               controller: _controller,
               keyboardType: TextInputType.number,
               autofocus: true,
-              decoration: const InputDecoration(
-                labelText: 'Quantidade',
+              decoration: InputDecoration(
+                labelText: context.tr('Quantidade'),
                 hintText: '1',
               ),
             ),
@@ -3483,7 +3514,7 @@ class _QuickQtyChip extends StatelessWidget {
           color: context.palette.surfaceMuted,
           borderRadius: BorderRadius.circular(999),
         ),
-        child: Text('x$value'),
+        child: Text(context.trFormat(r'x$value', {'value': value})),
       ),
     );
   }

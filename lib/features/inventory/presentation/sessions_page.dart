@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
 
 import '../../../app/backup/app_backup_service.dart';
 import '../../../app/qa/app_qa_controller.dart';
@@ -7,6 +7,7 @@ import '../../../app/settings/settings_scope.dart';
 import '../../../app/settings/settings_page.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../app/tour/app_tour_targets.dart';
+import '../../../l10n/localized_text.dart';
 import '../../../export/inventory_exporter.dart';
 import '../domain/inventory_repository.dart';
 import '../domain/models.dart';
@@ -119,7 +120,13 @@ class _SessionsPageState extends State<SessionsPage> {
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
         ..showSnackBar(
-          SnackBar(content: Text('Falha ao carregar sessões: $error')),
+          SnackBar(
+            content: Text(
+              context.trFormat(r'Falha ao carregar sessões: $error', {
+                'error': error,
+              }),
+            ),
+          ),
         );
     }
   }
@@ -143,7 +150,10 @@ class _SessionsPageState extends State<SessionsPage> {
           backgroundColor: Theme.of(context).cardColor,
           title: const Text('Apagar sessão'),
           content: Text(
-            'Tem a certeza que deseja apagar "${session.name}"? Todos os eventos serão removidos.',
+            context.trFormat(
+              r'Tem a certeza que deseja apagar "$name"? Todos os eventos serão removidos.',
+              {'name': session.name},
+            ),
           ),
           actions: [
             TextButton(
@@ -231,7 +241,7 @@ class _SessionsPageState extends State<SessionsPage> {
                         );
                       },
                       icon: const Icon(Icons.settings_outlined),
-                      tooltip: 'Definições',
+                      tooltip: context.tr('Definições'),
                     ),
                   ),
                 ],
@@ -363,8 +373,9 @@ class _NewSessionPageState extends State<NewSessionPage> {
       _isSaving = true;
     });
     try {
-      final defaultQuantityPrompt =
-          SettingsScope.of(context).value.barcodeQuantityPromptByDefault;
+      final defaultQuantityPrompt = SettingsScope.of(
+        context,
+      ).value.barcodeQuantityPromptByDefault;
       await widget.repository.createSession(
         name,
         barcodeQuantityPromptEnabled: defaultQuantityPrompt,
@@ -379,7 +390,13 @@ class _NewSessionPageState extends State<NewSessionPage> {
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
         ..showSnackBar(
-          SnackBar(content: Text('Falha ao criar a sessão: $error')),
+          SnackBar(
+            content: Text(
+              context.trFormat(r'Falha ao criar a sessão: $error', {
+                'error': error,
+              }),
+            ),
+          ),
         );
       setState(() {
         _isSaving = false;
@@ -448,8 +465,10 @@ class _NewSessionPageState extends State<NewSessionPage> {
                         autofocus: false,
                         textInputAction: TextInputAction.done,
                         onSubmitted: (_) => _submit(),
-                        decoration: const InputDecoration(
-                          hintText: 'Ex: Prateleira A1, Balcão, Armazém',
+                        decoration: InputDecoration(
+                          hintText: context.tr(
+                            'Ex: Prateleira A1, Balcão, Armazém',
+                          ),
                         ),
                       ),
                       SizedBox(height: context.s(16)),
@@ -523,7 +542,9 @@ class _NewSessionPageState extends State<NewSessionPage> {
                       SizedBox(height: context.s(32)),
                       FilledButton(
                         onPressed: _isSaving ? null : _submit,
-                        child: Text(_isSaving ? 'A criar...' : 'Começar contagem'),
+                        child: Text(
+                          _isSaving ? 'A criar...' : 'Começar contagem',
+                        ),
                       ),
                       SizedBox(height: context.s(14)),
                       Center(
@@ -584,12 +605,17 @@ class _SessionCard extends StatelessWidget {
                     ),
                     SizedBox(height: context.s(10)),
                     Text(
-                      '${_formatDate(session.updatedAt)}  •  ${stats.products} produtos',
+                      context.trFormat(r'$date • $products produtos', {
+                        'date': _formatDate(session.updatedAt),
+                        'products': stats.products,
+                      }),
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     SizedBox(height: context.s(10)),
                     Text(
-                      '${stats.reads} leituras',
+                      context.trFormat(r'$reads leituras', {
+                        'reads': stats.reads,
+                      }),
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],

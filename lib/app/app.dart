@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../app/backup/app_backup_service.dart';
 import '../app/qa/app_qa_controller.dart';
@@ -18,6 +19,7 @@ import '../features/inventory/domain/inventory_repository.dart';
 import '../features/medication_catalog/data/catalog_csv_importer.dart';
 import '../features/medication_catalog/domain/medication_catalog_repository.dart';
 import '../features/medication_catalog/domain/medication_enrichment_service.dart';
+import '../l10n/app_localizations.dart';
 
 class OpenPharmaStockApp extends StatefulWidget {
   const OpenPharmaStockApp({
@@ -94,7 +96,49 @@ class _OpenPharmaStockAppState extends State<OpenPharmaStockApp> {
           valueListenable: widget.settingsController,
           builder: (context, settings, child) {
             return MaterialApp(
-              title: 'open-pharma-stock',
+              onGenerateTitle: (context) =>
+                  AppLocalizations.of(context).appTitle,
+              supportedLocales: AppLocalizations.supportedLocales,
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              localeResolutionCallback: (deviceLocale, supportedLocales) {
+                if (deviceLocale?.languageCode == 'zh') {
+                  final traditional =
+                      deviceLocale?.scriptCode == 'Hant' ||
+                      const {
+                        'TW',
+                        'HK',
+                        'MO',
+                      }.contains(deviceLocale?.countryCode);
+                  return traditional
+                      ? const Locale.fromSubtags(
+                          languageCode: 'zh',
+                          scriptCode: 'Hant',
+                        )
+                      : const Locale.fromSubtags(
+                          languageCode: 'zh',
+                          scriptCode: 'Hans',
+                        );
+                }
+                if (deviceLocale?.languageCode == 'pt') {
+                  return deviceLocale?.countryCode == 'BR'
+                      ? const Locale('pt', 'BR')
+                      : const Locale('pt', 'PT');
+                }
+                return supportedLocales.any(
+                      (locale) =>
+                          locale.languageCode == deviceLocale?.languageCode,
+                    )
+                    ? supportedLocales.firstWhere(
+                        (locale) =>
+                            locale.languageCode == deviceLocale?.languageCode,
+                      )
+                    : const Locale('en');
+              },
               navigatorKey: _tourController.navigatorKey,
               theme: buildAppTheme(Brightness.dark),
               darkTheme: buildAppTheme(Brightness.dark),

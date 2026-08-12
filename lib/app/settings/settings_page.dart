@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:file_selector/file_selector.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
 
 import '../backup/app_backup_service.dart';
 import '../qa/app_qa_controller.dart';
@@ -9,6 +9,7 @@ import '../../features/medication_catalog/data/catalog_csv_importer.dart';
 import '../../features/medication_catalog/domain/medication_catalog_repository.dart';
 import '../../features/medication_catalog/domain/models.dart';
 import '../../scanner/scanner_engine.dart';
+import '../../l10n/localized_text.dart';
 import '../theme/app_theme.dart';
 import '../tour/app_tour_scope.dart';
 import '../tour/app_tour_targets.dart';
@@ -95,13 +96,22 @@ class _SettingsPageState extends State<SettingsPage> {
       }
       final warningSuffix = result.warnings.isEmpty
           ? ''
-          : ' Avisos: ${result.warnings.first}';
+          : context.trFormat(r' Avisos: $warning', {
+              'warning': result.warnings.first,
+            });
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
         ..showSnackBar(
           SnackBar(
             content: Text(
-              'CSV importado: ${result.importedMedicationCount} medicamentos, ${result.importedLookupCount} códigos.$warningSuffix',
+              context.trFormat(
+                r'CSV importado: $medicines medicamentos, $codes códigos.$warnings',
+                {
+                  'medicines': result.importedMedicationCount,
+                  'codes': result.importedLookupCount,
+                  'warnings': warningSuffix,
+                },
+              ),
             ),
           ),
         );
@@ -112,7 +122,13 @@ class _SettingsPageState extends State<SettingsPage> {
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
         ..showSnackBar(
-          SnackBar(content: Text('Falha ao importar CSV: $error')),
+          SnackBar(
+            content: Text(
+              context.trFormat(r'Falha ao importar CSV: $error', {
+                'error': error,
+              }),
+            ),
+          ),
         );
     } finally {
       if (mounted) {
@@ -178,7 +194,15 @@ class _SettingsPageState extends State<SettingsPage> {
         ..showSnackBar(
           SnackBar(
             content: Text(
-              'Backup exportado: ${result.summary.sessionCount} sessões, ${result.summary.scanCount} leituras, ${result.summary.catalogEntryCount} medicamentos. Local: ${result.path}',
+              context.trFormat(
+                r'Backup exportado: $sessions sessões, $reads leituras, $medicines medicamentos. Local: $path',
+                {
+                  'sessions': result.summary.sessionCount,
+                  'reads': result.summary.scanCount,
+                  'medicines': result.summary.catalogEntryCount,
+                  'path': result.path,
+                },
+              ),
             ),
           ),
         );
@@ -189,7 +213,13 @@ class _SettingsPageState extends State<SettingsPage> {
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
         ..showSnackBar(
-          SnackBar(content: Text('Falha ao exportar backup: $error')),
+          SnackBar(
+            content: Text(
+              context.trFormat(r'Falha ao exportar backup: $error', {
+                'error': error,
+              }),
+            ),
+          ),
         );
     } finally {
       if (mounted) {
@@ -251,7 +281,14 @@ class _SettingsPageState extends State<SettingsPage> {
         ..showSnackBar(
           SnackBar(
             content: Text(
-              'Backup importado: ${summary.sessionCount} sessões, ${summary.scanCount} leituras e ${summary.catalogEntryCount} medicamentos.',
+              context.trFormat(
+                r'Backup importado: $sessions sessões, $reads leituras e $medicines medicamentos.',
+                {
+                  'sessions': summary.sessionCount,
+                  'reads': summary.scanCount,
+                  'medicines': summary.catalogEntryCount,
+                },
+              ),
             ),
           ),
         );
@@ -262,7 +299,13 @@ class _SettingsPageState extends State<SettingsPage> {
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
         ..showSnackBar(
-          SnackBar(content: Text('Falha ao importar backup: $error')),
+          SnackBar(
+            content: Text(
+              context.trFormat(r'Falha ao importar backup: $error', {
+                'error': error,
+              }),
+            ),
+          ),
         );
     } finally {
       if (mounted) {
@@ -488,7 +531,9 @@ class _SettingsPageState extends State<SettingsPage> {
                       icon: Icons.today_outlined,
                       title: 'Antecedência (dias)',
                       trailing: _SelectionPill(
-                        '${settings.expiryAlertDays} dias',
+                        context.trFormat(r'$days dias', {
+                          'days': settings.expiryAlertDays,
+                        }),
                       ),
                       onTap: () =>
                           _showExpiryDaysSheet(context, controller, settings),
@@ -888,8 +933,14 @@ class _CatalogStateCard extends StatelessWidget {
         ? 'A carregar...'
         : state == null || state!.csvLastImportedAt == null
         ? 'Nenhum CSV importado'
-        : 'Última importação: ${_formatDateTime(state!.csvLastImportedAt!)}';
-    final countLabel = loading ? '—' : '${state?.csvEntryCount ?? 0} entradas';
+        : context.trFormat(r'Última importação: $date', {
+            'date': _formatDateTime(state!.csvLastImportedAt!),
+          });
+    final countLabel = loading
+        ? '—'
+        : context.trFormat(r'$entries entradas', {
+            'entries': state?.csvEntryCount ?? 0,
+          });
     return Container(
       width: double.infinity,
       margin: EdgeInsets.fromLTRB(
@@ -917,7 +968,9 @@ class _CatalogStateCard extends StatelessWidget {
           if (state?.csvSourceLabel != null) ...[
             SizedBox(height: context.s(4)),
             Text(
-              'Fonte: ${state!.csvSourceLabel}',
+              context.trFormat(r'Fonte: $source', {
+                'source': state!.csvSourceLabel,
+              }),
               style: Theme.of(context).textTheme.bodySmall,
             ),
           ],

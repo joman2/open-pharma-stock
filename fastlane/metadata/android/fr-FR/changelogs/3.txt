@@ -1,0 +1,5 @@
+Internationalisation de l’interface et des métadonnées de la boutique.
+
+- Prise en charge des variantes portugaises, chinoises et des langues RTL
+- Inventaire local et lecture de codes-barres FLOSS
+- Recherche en ligne facultative, désactivée par défaut
